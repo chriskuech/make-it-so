@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "noImplicitAny": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "importHelpers": true,
+    "moduleResolution": "node",
+    "downlevelIteration": true,
+    "allowSyntheticDefaultImports": true
+  }
+}
