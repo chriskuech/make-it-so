@@ -1,3 +1,5 @@
+👨‍🦲☕
+
 This repo is a Proof of Concept for implementing the [Requirements][Requirements] in a type-safe General Purpose Programming Language.  [Requirements][Requirements] is a PowerShell module for declaratively orchestrating multistep infrastructure configurations.
 
 # Features
