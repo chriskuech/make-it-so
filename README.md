@@ -1,8 +1,7 @@
-
 ```ts
 const requirements = [
     {
-        test: 
+        test:
     },
     {
 
