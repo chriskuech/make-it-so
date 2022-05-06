@@ -1,6 +1,6 @@
 import { define } from "../dist/requirement-nodes";
 
-const requirementGraph = define();
+const requirementGraph = define({});
 
 requirementGraph
   .derive({
