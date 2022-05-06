@@ -1,12 +1,19 @@
 {
   "compilerOptions": {
     "target": "ESNext",
+    "module": "commonjs",
     "noImplicitAny": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
     "importHelpers": true,
     "moduleResolution": "node",
     "downlevelIteration": true,
-    "allowSyntheticDefaultImports": true
-  }
+    "allowSyntheticDefaultImports": true,
+    "outDir": "dist",
+    "rootDir": "src",
+    "declaration": true,
+    "sourceMap": true,
+    "declarationMap": true
+  },
+  "exclude": ["tests"]
 }

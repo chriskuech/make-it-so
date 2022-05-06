@@ -1,0 +1,47 @@
+#!/usr/bin/env bash
+set -e
+
+PACKAGE_ORGANIZATION="datumsource"
+PACKAGE_NAME="make-it-so"
+
+SCRIPT_DIR=$(cd -- "$( dirname -- "${BASH_SOURCE[0]}"  )" &> /dev/null && pwd)
+PROJECT_DIR="${SCRIPT_DIR}"/../../
+VERSION_TO_PUBLISH=
+
+# Authenticate with Github
+printf "Logging into Github CLI\n"
+echo "$NODE_AUTH_TOKEN" | gh auth login --with-token
+
+# Get latest published version from Github
+printf "Fetch latest version from Github Package\n"
+versions=$(gh api /orgs/$PACKAGE_ORGANIZATION/packages/npm/$PACKAGE_NAME/versions)
+latest_version=$(echo "$versions" | jq --raw-output .[0].name)
+published_major=$(echo "$latest_version" | awk -F. '{print $1}')
+published_minor=$(echo "$latest_version" | awk -F. '{print $2}')
+published_patch=$(echo "$latest_version" | awk -F. '{print $3}')
+
+# Get the project version from source
+printf "Obtain version within source\n"
+source_version=$(jq --raw-output .version "$PROJECT_DIR"/package.json)
+source_major=$(echo "$source_version" | awk -F. '{print $1}')
+source_minor=$(echo "$source_version" |  awk -F. '{print $2}')
+source_patch=$(echo "$source_version" | awk -F. '{print $3}')
+
+printf "Published version on Github: %s\n" "$latest_version"
+printf "Version defined in source: %s\n" "$source_version"
+
+if [[ "$source_major" -gt "$published_major" ]]; then
+  VERSION_TO_PUBLISH="$source_version"
+elif [[ "$source_minor" -gt "$published_minor" ]]; then
+  VERSION_TO_PUBLISH="$source_version"
+elif [[ "$source_patch" -gt "$published_patch" ]]; then
+  VERSION_TO_PUBLISH="$source_version"
+else
+  VERSION_TO_PUBLISH="$published_major.$published_minor.$((published_patch + 1))"
+  npm version "$VERSION_TO_PUBLISH" --no-commit-hooks --no-git-tag-version
+fi
+
+# Publish
+printf "version to be published: %s\n" "$VERSION_TO_PUBLISH"
+cd "$PROJECT_DIR" || exit
+npm publish

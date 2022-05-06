@@ -25,7 +25,7 @@ async function get<State>(
   return trace.push("get", (trace) => trace.measure(transform));
 }
 
-export function define<T = {}>(state: T): LogNode<T> {
+export function define<T>(state: T): LogNode<T> {
   const node = new LogNode<typeof state>({
     describe: "Starting",
   });
