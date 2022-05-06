@@ -1,5 +1,5 @@
 {
-  "name": "make-it-so",
+  "name": "@datumsource/make-it-so",
   "version": "0.0.0",
   "description": "Strongly typed and declarative system for modeling complex requirements and setting them idempotently into their desired state.",
   "main": "dist/main.js",
@@ -8,6 +8,13 @@
     "prebuild": "npm run clean",
     "build": "tsc",
     "test": "npx ts-node ./tests/functional.ts"
+  },
+  "publishConfig": {
+    "@datumsource:registry": "https://npm.pkg.github.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/datumsource/make-it-so.git"
   },
   "author": "",
   "license": "ISC",
