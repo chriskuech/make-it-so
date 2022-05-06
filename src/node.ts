@@ -35,11 +35,11 @@ export abstract class Node<In, Out> {
     return node;
   }
 
-  // public check(input: In, trace?: Trace): NodeExecution<In, Out> {
-  //   const exec = NodeExecution.build(this, undefined, trace);
-  //   exec.start(input);
-  //   return exec;
-  // }
+  public check(input: In, trace?: Trace): NodeExecution<In, Out> {
+    const exec = NodeExecution.build(this, undefined, trace);
+    exec.start(input);
+    return exec;
+  }
 
   public apply(input: In, trace?: Trace): NodeExecution<In, Out> {
     const exec = NodeExecution.build(this, undefined, trace);

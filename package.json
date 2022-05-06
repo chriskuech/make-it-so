@@ -2,14 +2,18 @@
   "name": "make-it-so",
   "version": "0.0.0",
   "description": "Strongly typed and declarative system for modeling complex requirements and setting them idempotently into their desired state.",
-  "main": "src/index.ts",
+  "main": "dist/main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "clean": "rimraf dist",
+    "prebuild": "npm run clean",
+    "build": "tsc",
+    "test": "npx ts-node ./tests/functional.ts"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@types/node": "^16.11.7",
+    "rimraf": "^3.0.0",
     "ts-node": "^10.4.0",
     "tslib": "^2.3.1",
     "typescript": "^4.4.4"
