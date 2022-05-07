@@ -4,6 +4,9 @@
   "description": "Strongly typed and declarative system for modeling complex requirements and setting them idempotently into their desired state.",
   "main": "dist/main.js",
   "types": "dist/main.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "clean": "rimraf dist",
     "prebuild": "npm run clean",
