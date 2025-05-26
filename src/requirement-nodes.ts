@@ -9,8 +9,8 @@ import {
 import { Node } from "./core/node";
 import { Trace } from "./core/trace";
 import { ExecContext } from "./core/execution";
-import { FanOutNode } from "./nodes/FanOutNode";
-import { MergeNode } from "./nodes/MergeNode";
+import { FanOutNode } from "./nodes/fan-out-node";
+import { MergeNode } from "./nodes/merge-node";
 
 /**
  * Tests a condition and logs the result

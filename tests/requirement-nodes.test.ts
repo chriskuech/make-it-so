@@ -1,7 +1,7 @@
 import { Trace } from "../src/core/trace";
 import { ExecContext } from "../src/core/execution";
 import { merge } from "../src/requirement-nodes";
-import { FanOutNode } from "../src/nodes/FanOutNode";
+import { FanOutNode } from "../src/nodes/fan-out-node";
 
 describe("FanOutNode", () => {
   it("should execute multiple requirements in parallel", async () => {
