@@ -1,4 +1,4 @@
-import { define } from "../dist/requirement-nodes";
+import { define } from "../src/requirement-nodes";
 
 const requirementGraph = define({});
 

@@ -1,6 +1,6 @@
-import { ExecContext } from "./core/execution";
-import { Node } from "./core/node";
-import { RequirementNode } from "./requirement-nodes";
+import { ExecContext } from "../core/execution";
+import { Node } from "../core/node";
+import { RequirementNode } from "../requirement-nodes";
 
 /**
  * A node that encapsulates a complete requirement graph.
@@ -8,7 +8,7 @@ import { RequirementNode } from "./requirement-nodes";
  * @template A The input state type
  * @template B The output state type
  */
-export class NestedGraph<A extends {}, B extends {}> extends Node<A, B> {
+export class NestedGraphNode<A extends {}, B extends {}> extends Node<A, B> {
   /**
    * Creates a new nested graph
    * @param graph The requirement node that represents the complete graph
