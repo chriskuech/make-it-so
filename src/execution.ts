@@ -62,7 +62,10 @@ export class NodeExecution<In = {}, Out = {}> {
 
   public static build<In, Out>(
     node: Node<In, Out>,
-    visited: Map<Node<{}, {}>, NodeExecution> = new Map(),
+    visited: Map<
+      Node<unknown, unknown>,
+      NodeExecution<unknown, unknown>
+    > = new Map(),
     trace: Trace = new Trace(undefined, [console.log])
   ): NodeExecution<In, Out> {
     if (!visited.has(node)) {
