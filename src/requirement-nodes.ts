@@ -25,7 +25,7 @@ async function get<State>(
   return trace.push("get", (trace) => trace.measure(transform));
 }
 
-export function define<T>(state: T): LogNode<T> {
+export function define<T extends {}>(state: T): LogNode<T> {
   const node = new LogNode<typeof state>({
     describe: "Starting",
   });
@@ -48,7 +48,7 @@ export abstract class RequirementNode<A extends {}, B extends {}> extends Node<
     return node;
   }
 
-  derive<C>(requirement: Derivation<B, C>): DerivationNode<B, C> {
+  derive<C extends {}>(requirement: Derivation<B, C>): DerivationNode<B, C> {
     const node = new DerivationNode(requirement);
     this.then(node);
     return node;
@@ -67,7 +67,7 @@ export abstract class RequirementNode<A extends {}, B extends {}> extends Node<
   }
 }
 
-export class LogNode<T> extends RequirementNode<T, T> {
+export class LogNode<T extends {}> extends RequirementNode<T, T> {
   constructor(private readonly requirement: Log<T>) {
     super();
   }
@@ -98,7 +98,10 @@ export class AssertionNode<T extends {}> extends RequirementNode<T, T> {
   }
 }
 
-export class ActionNode<State> extends RequirementNode<State, State> {
+export class ActionNode<State extends {}> extends RequirementNode<
+  State,
+  State
+> {
   constructor(private readonly requirement: Action<State>) {
     super();
   }
@@ -111,7 +114,10 @@ export class ActionNode<State> extends RequirementNode<State, State> {
   }
 }
 
-export class DerivationNode<From, To> extends RequirementNode<From, To> {
+export class DerivationNode<
+  From extends {},
+  To extends {}
+> extends RequirementNode<From, To> {
   constructor(private readonly requirement: Derivation<From, To>) {
     super();
   }
@@ -123,7 +129,10 @@ export class DerivationNode<From, To> extends RequirementNode<From, To> {
   }
 }
 
-export class ResourceNode<State> extends RequirementNode<State, State> {
+export class ResourceNode<State extends {}> extends RequirementNode<
+  State,
+  State
+> {
   constructor(private readonly requirement: Resource<State>) {
     super();
   }

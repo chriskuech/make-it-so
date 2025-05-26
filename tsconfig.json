@@ -15,5 +15,5 @@
     "sourceMap": true,
     "declarationMap": true
   },
-  "exclude": ["tests"]
+  "exclude": ["tests", "dist"]
 }

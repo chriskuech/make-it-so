@@ -9,6 +9,7 @@
   ],
   "scripts": {
     "clean": "rimraf dist",
+    "check": "tsc --noEmit",
     "prebuild": "npm run clean",
     "build": "tsc",
     "test": "npx ts-node ./tests/functional.ts"
